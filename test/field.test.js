@@ -48,6 +48,9 @@ describe('field', function() {
 
         EQ (field.set(database, 'production.name.something.special', 'superman'), undefined)
         EQ (database.production.name.something.special, 'superman')
+
+        EQ (field.set(database, 'production.country', false), undefined)
+        EQ (field.get(database, 'production.country'), false)
       })
 
     })
