@@ -1,0 +1,29 @@
+{
+  "name": "field",
+  "version": "0.0.1",
+  "description": "Easily set and get values of a field in your JavaScript object.",
+  "homepage": [
+    ""
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": ["field", "fields", "set", "get", "object", "property", "properties", "accessor", "accessors", "configuration", "config"],
+  "author": "JP Richardson <jprichardson@gmail.com>",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": ""
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+
+    "mocha": *
+  },
+  "main": "./lib/jsoncfg.js",
+  "scripts": {
+    "test": "mocha test"
+  }
+}
