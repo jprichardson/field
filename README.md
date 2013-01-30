@@ -81,6 +81,8 @@ bigObject.get = get.bind(bigObject) //actually 'bind' really isn't necessary, co
 bigObject.set = set.bind(bigObject) //bigObject.get = get
 
 console.log(bigObject.get('host.url')) //'http://myserver.com'
+```
+
 
 
 Config Files
