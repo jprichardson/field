@@ -7,7 +7,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/jprichardson/node-field"
   },
   "keywords": ["field", "fields", "set", "get", "object", "property", "properties", "accessor", "accessors", "configuration", "config"],
   "author": "JP Richardson <jprichardson@gmail.com>",
