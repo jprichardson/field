@@ -20,7 +20,7 @@
   "dependencies": {},
   "devDependencies": {
     "testutil": "0.4.x",
-    "mocha": *
+    "mocha": "*"
   },
   "main": "./lib/jsoncfg.js",
   "scripts": {
