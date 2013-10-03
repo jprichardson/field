@@ -22,7 +22,7 @@
     "testutil": "0.4.x",
     "mocha": "*"
   },
-  "main": "./lib/jsoncfg.js",
+  "main": "./lib/field.js",
   "scripts": {
     "test": "mocha test"
   }
