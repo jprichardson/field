@@ -29,6 +29,14 @@ describe('field', function() {
         EQ (field.get(database, 'production.host'), field.get(database, 'production:host'))
       })
     })
+
+    describe('> when bind is used', function() {
+      it('should properly bind and retrieve the value', function() {
+        var a = {database: {production: {host: 'myserver.com'}}}
+        a.get = field.get.bind(a)
+        EQ (a.get('database:production.host'), 'myserver.com')
+      })
+    })
   })
 
   describe('- set', function() {
@@ -50,7 +58,15 @@ describe('field', function() {
         EQ (field.set(database, 'production.country', false), undefined)
         EQ (field.get(database, 'production.country'), false)
       })
-
+    })
+  
+    describe('> when bind is used', function() {
+      it('it should properly bind and set the value', function() {
+        var a = {}
+        a.set = field.set.bind(a)
+        a.set('database:production.host', 'myserver.com')
+        EQ (a.database.production.host, 'myserver.com')
+      })
     })
   })
 })
