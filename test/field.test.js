@@ -1,8 +1,6 @@
 var testutil = require('testutil')
   , field = require('../lib/field');
 
-console.log(EQ)
-
 var database = {
   "development": {
     "name": "myapp_development",
