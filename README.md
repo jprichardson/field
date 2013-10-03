@@ -25,7 +25,7 @@ dbPort = field.get(config, 'environment:production:port')
 Installation
 ------------
 
-    npm install field
+    npm install --save field
 
 
 Usage
@@ -60,14 +60,6 @@ console.log(database.production.port) //27017
 ```js
 var field = require('field');
 
-function get (field) {
-  return field.get(this, field);
-}
-
-function set (field, value) {
-  return field.set(this, field, value);
-}
-
 var bigObject = {
   host: {
     url: 'http://myserver.com'
@@ -77,8 +69,8 @@ var bigObject = {
   */ 
 };
 
-bigObject.get = get.bind(bigObject) //actually 'bind' really isn't necessary, could just do
-bigObject.set = set.bind(bigObject) //bigObject.get = get
+bigObject.get = field.get.bind(bigObject) 
+bigObject.set = field.set.bind(bigObject)
 
 console.log(bigObject.get('host.url')) //'http://myserver.com'
 ```
@@ -89,6 +81,7 @@ Config Files
 ------------
 
 Use [fnoc](https://github.com/jprichardson/node-fnoc) or [jsoncfg](https://github.com/jprichardson/node-jsoncfg) which both use this module.
+
 
 
 License
