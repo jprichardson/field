@@ -10,7 +10,7 @@ Why?
 I got tired of doing this:
 
 ```js
-var dbPort = (config && config.environment && config.convironment.production && config.environment.production.port)
+var dbPort = (config && config.environment && config.environment.production && config.environment.production.port)
 ```
 
 now...
