@@ -1,4 +1,4 @@
-var testutil = require('testutil')
+var assert = require('assert')
 var field = require('../lib/field')
 
 /* global describe it */
@@ -25,10 +25,10 @@ describe('field', function () {
   describe('- get', function () {
     describe('> when field path is specified', function () {
       it('should retrieve the value', function () {
-        EQ(field.get(database, 'production.host'), 'myserver.com')
-        EQ(field.get(database, 'asdfasdfasdfa'), undefined) // doesn't exist
+        assert.strictEqual(field.get(database, 'production.host'), 'myserver.com')
+        assert.strictEqual(field.get(database, 'asdfasdfasdfa'), undefined) // doesn't exist
 
-        EQ(field.get(database, 'production.host'), field.get(database, 'production:host'))
+        assert.strictEqual(field.get(database, 'production.host'), field.get(database, 'production:host'))
       })
     })
 
@@ -36,7 +36,7 @@ describe('field', function () {
       it('should properly bind and retrieve the value', function () {
         var a = {database: {production: {host: 'myserver.com'}}}
         a.get = field.get.bind(a)
-        EQ(a.get('database:production.host'), 'myserver.com')
+        assert.strictEqual(a.get('database:production.host'), 'myserver.com')
       })
     })
   })
@@ -44,21 +44,21 @@ describe('field', function () {
   describe('- set', function () {
     describe('> when a a field path is specified', function () {
       it('should set the value', function () {
-        EQ(database.production.host, 'myserver.com')
-        EQ(field.set(database, 'production.host', 'yourserver.com'), 'myserver.com')
-        EQ(database.production.host, 'yourserver.com')
+        assert.strictEqual(database.production.host, 'myserver.com')
+        assert.strictEqual(field.set(database, 'production.host', 'yourserver.com'), 'myserver.com')
+        assert.strictEqual(database.production.host, 'yourserver.com')
 
-        EQ(field.set(database, 'production.doesnotexist', 'nope'), undefined)
-        EQ(database.production.doesnotexist, 'nope')
+        assert.strictEqual(field.set(database, 'production.doesnotexist', 'nope'), undefined)
+        assert.strictEqual(database.production.doesnotexist, 'nope')
 
-        EQ(field.set(database, 'production.location.short', 'US'), undefined)
-        EQ(database.production.location.short, 'US')
+        assert.strictEqual(field.set(database, 'production.location.short', 'US'), undefined)
+        assert.strictEqual(database.production.location.short, 'US')
 
-        EQ(field.set(database, 'production.name.something.special', 'superman'), undefined)
-        EQ(database.production.name.something.special, 'superman')
+        assert.strictEqual(field.set(database, 'production.name.something.special', 'superman'), undefined)
+        assert.strictEqual(database.production.name.something.special, 'superman')
 
-        EQ(field.set(database, 'production.country', false), undefined)
-        EQ(field.get(database, 'production.country'), false)
+        assert.strictEqual(field.set(database, 'production.country', false), undefined)
+        assert.strictEqual(field.get(database, 'production.country'), false)
       })
     })
 
@@ -67,7 +67,7 @@ describe('field', function () {
         var a = {}
         a.set = field.set.bind(a)
         a.set('database:production.host', 'myserver.com')
-        EQ(a.database.production.host, 'myserver.com')
+        assert.strictEqual(a.database.production.host, 'myserver.com')
       })
     })
   })
