@@ -8,12 +8,7 @@
   },
   "keywords": ["stub", "field", "fields", "set", "get", "object", "property", "properties", "accessor", "accessors", "configuration", "config"],
   "author": "JP Richardson <jprichardson@gmail.com>",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": ""
-    }
-  ],
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "testutil": "0.4.x",
