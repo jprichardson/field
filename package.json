@@ -4,7 +4,7 @@
   "description": "Easily set and get values of a field in your JavaScript object.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jprichardson/node-field"
+    "url": "https://github.com/jprichardson/field"
   },
   "keywords": ["stub", "field", "fields", "set", "get", "object", "property", "properties", "accessor", "accessors", "configuration", "config"],
   "author": "JP Richardson <jprichardson@gmail.com>",
