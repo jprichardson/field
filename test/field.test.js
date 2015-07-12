@@ -71,4 +71,21 @@ describe('field', function () {
       })
     })
   })
+
+  describe('> when field contains path .', function () {
+    it('should properly parse', function () {
+      var fixture = {
+        '../domwindow': {
+          'localStorage': {
+            'getItem': 5
+          }
+        }
+      }
+      var stubs = {}
+      field.set(stubs, '../domwindow:localStorage.getItem', 5)
+      var val = field.get(stubs, '../domwindow:localStorage.getItem')
+      assert.deepEqual(stubs, fixture)
+      assert.strictEqual(val, 5)
+    })
+  })
 })
