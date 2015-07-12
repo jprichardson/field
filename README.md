@@ -1,7 +1,7 @@
-Node.js - field
-================
+field
+=====
 
-Easily set and get values of a field in your JavaScript object.
+Easily get, set, stub values of a field in a JavaScript object.
 
 
 Why?
@@ -10,22 +10,52 @@ Why?
 I got tired of doing this:
 
 ```js
-var dbPort = (config && config.environment && config.environment.production && config.environment.production.port)
+var port = cfg && cfg.env && cfg.env.prod && cfg.env.prod.port
 ```
 
 now...
 
 ```js
-var dbPort = field.get(config, 'environment.production.port')
-//or if you prefer ':'
-dbPort = field.get(config, 'environment:production:port')
+var field = require('field')
+var port = field.get(cfg, 'env.prod.port')
+```
+
+or if you prefer ":"...
+
+```js
+var field = require('field')
+var port = field.get(config, 'env:prod:port')
+```
+
+I also got tired of writing long stubs:
+
+```js
+var stub = {
+  window: {
+    localStorage: {
+      getItem: function () {
+        return 'data'
+      },
+      length: 1
+    }
+  }
+}
+```
+
+now...
+
+```js
+var field = require('field')
+var stub = {}
+field(stub, 'window:localStorage.getItem', function () { return 'data' })
+field(stub, 'window:localStorage.length', 1)
 ```
 
 
 Installation
 ------------
 
-    npm install --save field
+    npm i --save field
 
 
 Usage
@@ -33,62 +63,57 @@ Usage
 
 ### get
 
-
 Gets the property value of the object. Returns `undefined` if it does not exist.
 
-```javascript
+```js
 var field = require('field')
 var dbPort = field.get(config, 'environment:production:port')
 ```
 
+
 ### set
 
-
-Sets the property value of the object. Returns the old value. If the field does not exist
+Sets the property value of the object. **Returns the old value.** If the field does not exist
 then it returns `undefined` and creates the object chain and sets the value.
 
-```javascript
+```js
 var field = require('field')
 var database = {}
-console.log(field.get(database, 'production.port')) //undefined
-field.set(database, 'production.port', 27017) //return undefined since it never existed before
-console.log(database.production.port) //27017
+
+console.log(field.get(database, 'production.port'))
+// => undefined
+
+// will return undefined since it never existed before
+field.set(database, 'production.port', 27017)
+console.log(database.production.port)
+// => 27017
 ```
 
-### your own objects
+### Binding
 
 ```js
-var field = require('field');
+var field = require('field')
 
 var bigObject = {
   host: {
     url: 'http://myserver.com'
   }
-  /* 
-    ... some big object ... 
-  */ 
+  /*
+    ... some big object ...
+  */
 };
 
-bigObject.get = field.get.bind(bigObject) 
+bigObject.get = field.get.bind(bigObject)
 bigObject.set = field.set.bind(bigObject)
 
-console.log(bigObject.get('host.url')) //'http://myserver.com'
+console.log(bigObject.get('host.url'))
+// => 'http://myserver.com'
 ```
-
-
-
-Config Files
-------------
-
-Use [fnoc](https://github.com/jprichardson/node-fnoc) or [jsoncfg](https://github.com/jprichardson/node-jsoncfg) which both use this module.
-
-
 
 License
 -------
 
 (MIT License)
 
-Copyright 2013, JP Richardson  <jprichardson@gmail.com>
-
+Copyright 2015, [JP Richardson](https://github.com/jprichardson)
 
