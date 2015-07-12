@@ -1,3 +1,7 @@
+1.0.1 / 2015-07-12
+------------------
+- hack to get `'../domwindow:localStorage.getItem'` to split to `'../domwindow'`, `'localStorage'`, `'getItem'`
+
 1.0.0 / 2015-07-12
 ------------------
 - JavaScript Standard Style
