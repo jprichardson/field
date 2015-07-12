@@ -1,7 +1,7 @@
 {
   "name": "field",
   "version": "0.1.0",
-  "description": "Easily set and get values of a field in your JavaScript object.",
+  "description": "Easily set, get, stub values of a field in a JavaScript object.",
   "repository": {
     "type": "git",
     "url": "https://github.com/jprichardson/field"
